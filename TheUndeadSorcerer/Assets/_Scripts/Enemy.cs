@@ -19,11 +19,14 @@ public class Enemy : MonoBehaviour
     float timePassed;
     float newDestinationCD = 0.5f;
 
+    private EnemySound enemySound;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
+        enemySound = GetComponent<EnemySound>();
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class Enemy : MonoBehaviour
             if (Vector3.Distance(player.transform.position, transform.position) <= attackRange && player.GetComponent<Health>().health > 0)
             {
                 animator.SetTrigger("attack");
+                enemySound.PlayAttackClip();
                 timePassed = 0;
             }
         }
@@ -80,6 +84,7 @@ public class Enemy : MonoBehaviour
         if (health > 0)
         {
             animator.SetTrigger("damage");
+            enemySound.PlayHitClip();
         }
         else if (health <= 0f)
         {
@@ -89,6 +94,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        enemySound.PlayDeathClip();
         Destroy(this.gameObject);
         Instantiate(ragdoll, transform.position, transform.rotation);
     }

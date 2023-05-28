@@ -42,6 +42,7 @@ public class AttackState : State
         if (timePassed >= clipLength / clipSpeed && attack)
         {
             stateMachine.ChangeState(character.attacking);
+            character.characterSound.PlayAttackClip();
         }
         if (timePassed >= clipLength / clipSpeed)
         {

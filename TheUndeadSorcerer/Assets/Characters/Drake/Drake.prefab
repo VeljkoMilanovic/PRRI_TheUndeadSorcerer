@@ -1083,6 +1083,7 @@ GameObject:
   - component: {fileID: 8281013280580088816}
   - component: {fileID: 5951975271528760267}
   - component: {fileID: -3266961237928744439}
+  - component: {fileID: -3299747899445077094}
   - component: {fileID: 255534677806653086}
   m_Layer: 9
   m_Name: Drake
@@ -1159,6 +1160,22 @@ MonoBehaviour:
   attackCD: 5
   attackRange: 1.5
   aggroRange: 4
+--- !u!114 &-3299747899445077094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3406953104204706608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ad78bb2480cbb4483635ecc528570f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySoundSource: {fileID: 0}
+  enemyAttackClip: {fileID: 8300000, guid: 34f5e2e8148e00c48a195a448bcd9c16, type: 3}
+  enemyHitClip: {fileID: 8300000, guid: 02102adf6bc404c4eaada70236c78424, type: 3}
+  enemyDeathClip: {fileID: 8300000, guid: dd6c95276e641df4e87a6ed28f0791a8, type: 3}
 --- !u!195 &255534677806653086
 NavMeshAgent:
   m_ObjectHideFlags: 0

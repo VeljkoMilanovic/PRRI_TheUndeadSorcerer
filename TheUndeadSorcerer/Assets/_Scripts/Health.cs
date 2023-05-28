@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     private Animator animator;
+    private Character character;
 
     public float health = 100f;
     [SerializeField] GameObject ragdoll;
@@ -12,6 +13,7 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        character = GetComponent<Character>();
     }
 
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class Health : MonoBehaviour
         if (health > 0)
         {
             animator.SetTrigger("damage");
+            character.characterSound.PlayHitClip();
         }
         else if (health <= 0f)
         {
@@ -42,6 +45,7 @@ public class Health : MonoBehaviour
     }
     public void Die()
     {
+        character.characterSound.PlayDeathClip();
         Destroy(this.gameObject);
         Instantiate(ragdoll, transform.position, transform.rotation);
     }

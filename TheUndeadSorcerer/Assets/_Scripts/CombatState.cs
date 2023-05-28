@@ -76,12 +76,14 @@ public class CombatState : State
         if (attack)
         {
             character.animator.SetTrigger("attack");
+            character.characterSound.PlayAttackClip();
             stateMachine.ChangeState(character.attacking);
         }
 
         if (jumpAttack)
         {
             character.animator.SetTrigger("jumpAttack");
+            character.characterSound.PlayJumpAttackClip();
             stateMachine.ChangeState(character.jumpAttacking);
         }
     }

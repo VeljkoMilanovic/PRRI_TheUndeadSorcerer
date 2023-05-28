@@ -43,6 +43,8 @@ public class Character : MonoBehaviour
     [HideInInspector]
     public Animator animator;
     [HideInInspector]
+    public CharacterSound characterSound;
+    [HideInInspector]
     public Vector3 playerVelocity;
 
 
@@ -51,6 +53,7 @@ public class Character : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        characterSound = GetComponent<CharacterSound>();
         playerInput = GetComponent<PlayerInput>();
         cameraTransform = Camera.main.transform;
 
