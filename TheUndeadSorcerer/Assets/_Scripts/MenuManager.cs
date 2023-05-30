@@ -2,40 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject settingsPanel;
 
     private void Awake()
     {
-        pausePanel.SetActive(false);
+        DisablePausePanel();
         settingsPanel.SetActive(false);
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void PauseGame()
     {
         Time.timeScale = 0f;
-        pausePanel.SetActive(true);
+        EnablePausePanel();
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1f;
-        pausePanel.SetActive(false);
+        DisablePausePanel();
     }
 
     public void OpenSettings()
     {
-        pausePanel.SetActive(false);
+        DisablePausePanel();
+        DisableMainMenuPanel();
         settingsPanel.SetActive(true);
     }
 
     public void CloseSettings()
     {
         settingsPanel.SetActive(false);
-        pausePanel.SetActive(true);
+        EnablePausePanel();
+        EnableMainPanel();
     }
 
     public void ExitGame()
@@ -45,5 +60,53 @@ public class MenuManager : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+    void EnableMainPanel()
+    {
+        if (mainMenuPanel != null)
+        {
+            mainMenuPanel.SetActive(true);
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    void DisableMainMenuPanel()
+    {
+        if (mainMenuPanel != null)
+        {
+            mainMenuPanel.SetActive(false);
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    void EnablePausePanel()
+    {
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(true);
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    void DisablePausePanel()
+    {
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+        }
+        else
+        {
+            return;
+        }
     }
 }

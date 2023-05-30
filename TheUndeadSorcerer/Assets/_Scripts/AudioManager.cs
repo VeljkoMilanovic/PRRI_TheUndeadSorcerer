@@ -22,6 +22,45 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI musicMuteButtonText;
     [SerializeField] private TextMeshProUGUI SFXMuteButtonText;
 
+    private static readonly string FirstPlay = "FirstPlay";
+    private static readonly string MasterPref = "MasterPref";
+    private static readonly string BackgroundMusicPref = "BackgroundMusicPref";
+    private static readonly string SFXPref = "SFXPref";
+    private float masterFloat, backgroundMusicFloat, sfxFloat;
+    private int firstPlayInt;
+
+    private void Start()
+    {
+        firstPlayInt = PlayerPrefs.GetInt(FirstPlay);
+
+        if(firstPlayInt == 0)
+        {
+            masterFloat = masterVolumeSlider.value;
+            backgroundMusicFloat = musicVolumeSlider.value;
+            sfxFloat = SFXVolumeSlider.value;
+            PlayerPrefs.SetFloat(MasterPref, masterFloat);
+            PlayerPrefs.SetFloat(BackgroundMusicPref, backgroundMusicFloat);
+            PlayerPrefs.SetFloat(SFXPref, sfxFloat);
+            PlayerPrefs.SetInt(FirstPlay, -1);
+        }
+        else
+        {
+            masterFloat = PlayerPrefs.GetFloat(MasterPref);
+            masterVolumeSlider.value = masterFloat;
+            backgroundMusicFloat = PlayerPrefs.GetFloat(BackgroundMusicPref);
+            musicVolumeSlider.value = backgroundMusicFloat;
+            sfxFloat = PlayerPrefs.GetFloat(SFXPref);
+            SFXVolumeSlider.value = sfxFloat;
+        }
+    }
+
+    public void SaveSoundSettings()
+    {
+        PlayerPrefs.SetFloat(MasterPref, masterVolumeSlider.value);
+        PlayerPrefs.SetFloat(BackgroundMusicPref, musicVolumeSlider.value);
+        PlayerPrefs.SetFloat(SFXPref, SFXVolumeSlider.value);
+    }
+
     public void ChangeMasterVolume()
     {
         ChangeMusicVolume();
