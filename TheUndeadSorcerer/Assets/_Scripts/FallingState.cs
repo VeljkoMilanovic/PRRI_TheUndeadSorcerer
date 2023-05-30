@@ -18,9 +18,20 @@ public class FallingState : State
     public override void Enter()
     {
         base.Enter();
-        gravityValue = character.gravityValue;
+
         grounded = false;
+        gravityValue = character.gravityValue;
+        playerSpeed = character.playerSpeed;
+        gravityVelocity.y = 0;
+
         character.animator.SetTrigger("fall");
+    }
+
+    public override void HandleInput()
+    {
+        base.HandleInput();
+
+        input = moveAction.ReadValue<Vector2>();
     }
 
     public override void LogicUpdate()
@@ -39,7 +50,6 @@ public class FallingState : State
         base.PhysicsUpdate();
         if (!grounded)
         {
-
             velocity = character.playerVelocity;
             airVelocity = new Vector3(input.x, 0, input.y);
 
@@ -47,8 +57,10 @@ public class FallingState : State
             velocity.y = 0f;
             airVelocity = airVelocity.x * character.cameraTransform.right.normalized + airVelocity.z * character.cameraTransform.forward.normalized;
             airVelocity.y = 0f;
-            character.controller.Move(new Vector3(0f, -9.81f, 0f) * 0.25f * Time.deltaTime);
+            character.controller.Move(gravityVelocity * Time.deltaTime + (airVelocity * character.airControl + velocity * (1 - character.airControl)) * playerSpeed * Time.deltaTime);
         }
+
+        gravityVelocity.y += gravityValue * Time.deltaTime;
         grounded = character.controller.isGrounded;
     }
 

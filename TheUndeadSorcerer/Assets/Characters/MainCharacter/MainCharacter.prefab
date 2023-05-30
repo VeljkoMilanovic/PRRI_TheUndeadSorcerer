@@ -348,7 +348,7 @@ MonoBehaviour:
   playerSpeed: 5
   crouchSpeed: 2
   sprintSpeed: 7
-  jumpHeight: 0.8
+  jumpHeight: 2
   gravityMultiplier: 2
   rotationSpeed: 5
   crouchColliderHeight: 1.35

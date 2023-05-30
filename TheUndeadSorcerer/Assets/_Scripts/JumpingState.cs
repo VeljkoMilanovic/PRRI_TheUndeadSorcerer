@@ -8,6 +8,7 @@ public class JumpingState : State
     float jumpHeight;
     float playerSpeed;
     float timePassed;
+    float jumpTime;
 
     Vector3 airVelocity;
 
@@ -27,6 +28,7 @@ public class JumpingState : State
         jumpHeight = character.jumpHeight;
         playerSpeed = character.playerSpeed;
         gravityVelocity.y = 0;
+        jumpTime = 0.5f;
 
         character.animator.SetFloat("speed", 0);
         character.animator.SetTrigger("jump");
@@ -43,7 +45,7 @@ public class JumpingState : State
     {
         base.LogicUpdate();
 
-        if (timePassed > character.animator.GetCurrentAnimatorStateInfo(0).length)
+        if (timePassed > jumpTime)
         {
             character.animator.SetTrigger("fall");
             stateMachine.ChangeState(character.falling);

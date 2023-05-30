@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
@@ -36,5 +37,19 @@ public class AudioManager : MonoBehaviour
     {
         mainCharacterSFXSource.volume = SFXVolumeSlider.value * masterVolumeSlider.value;
         enemySFXSource.volume = SFXVolumeSlider.value * masterVolumeSlider.value;
+    }
+
+    public void Mute(AudioSource audioSource)
+    {
+        audioSource.mute = !audioSource.mute;
+        GameObject clickedButton = EventSystem.current.currentSelectedGameObject.gameObject;
+        if (audioSource.mute == true)
+        {
+            clickedButton.GetComponentInChildren<TextMeshProUGUI>().text = "ON";
+        }
+        else
+        {
+            clickedButton.GetComponentInChildren<TextMeshProUGUI>().text = "OFF";
+        }
     }
 }
