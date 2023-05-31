@@ -97,6 +97,7 @@ public class Enemy : MonoBehaviour
         enemySound.PlayDeathClip();
         Destroy(this.gameObject);
         Instantiate(ragdoll, transform.position, transform.rotation);
+        GameManager.Instance.UpdateScore();
     }
 
     public void StartDealDamage()

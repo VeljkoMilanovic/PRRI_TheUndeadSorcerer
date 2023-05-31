@@ -48,5 +48,6 @@ public class Health : MonoBehaviour
         character.characterSound.PlayDeathClip();
         Destroy(this.gameObject);
         Instantiate(ragdoll, transform.position, transform.rotation);
+        GameManager.Instance.GameOver();
     }
 }
