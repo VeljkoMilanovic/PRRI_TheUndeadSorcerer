@@ -1,5 +1,7 @@
 # PRRI_TheUndeadSorcerer
 
+Ova igra bazirana je na ruskoj bajci "Koščej Besmrtni". Igrač preuzima ulogu drvoseče čije roditelje otima Koščej, koji potom polazi u potragu za njima. Na svom putu on mora proći razne izazove, u kojima mu pomažu saveznici koje upoznaje kroz avanturu. U radu će biti realizovan prvi nivo igre, to jest, prvi i jedini izazov koji igrač mora preći sam.
+
 ![image](https://github.com/VeljkoMilanovic/PRRI_TheUndeadSorcerer/assets/83020328/cb98035f-7641-4bbd-87e2-8c2b74d30b44)
 
 ![image](https://github.com/VeljkoMilanovic/PRRI_TheUndeadSorcerer/assets/83020328/8d461eb9-e5c4-4359-9949-7464906d9bc6)
