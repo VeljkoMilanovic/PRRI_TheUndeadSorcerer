@@ -1,17 +1,15 @@
 using UnityEngine;
-public class JumpAttackState : State
+
+public class JumpAttackFallingState : State
 {
     bool grounded;
 
     float gravityValue;
-    float jumpHeight;
     float playerSpeed;
-    float timePassed;
-    float jumpTime;
 
     Vector3 airVelocity;
 
-    public JumpAttackState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
+    public JumpAttackFallingState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
     {
         character = _character;
         stateMachine = _stateMachine;
@@ -21,17 +19,12 @@ public class JumpAttackState : State
     {
         base.Enter();
 
-        timePassed = 0f;
         grounded = false;
         gravityValue = character.gravityValue;
-        jumpHeight = character.jumpHeight;
         playerSpeed = character.playerSpeed;
         gravityVelocity.y = 0;
-        jumpTime = 0.5f;
 
-        character.animator.SetFloat("speed", 0);
-        character.animator.SetTrigger("jumpAttack");
-        Jump();
+        character.animator.SetTrigger("jumpAttackFall");
     }
 
     public override void HandleInput()
@@ -43,14 +36,13 @@ public class JumpAttackState : State
 
     public override void LogicUpdate()
     {
-        base.LogicUpdate();
 
-        if (timePassed > jumpTime)
+        base.LogicUpdate();
+        if (character.controller.isGrounded)
         {
-            character.animator.SetTrigger("jumpAttackFall");
-            stateMachine.ChangeState(character.jumpAttackFalling);
+            character.animator.SetTrigger("jumpAttackLand");
+            stateMachine.ChangeState(character.jumpAttackLanding);
         }
-        timePassed += Time.deltaTime;
     }
 
     public override void PhysicsUpdate()
@@ -58,7 +50,6 @@ public class JumpAttackState : State
         base.PhysicsUpdate();
         if (!grounded)
         {
-
             velocity = character.playerVelocity;
             airVelocity = new Vector3(input.x, 0, input.y);
 
@@ -73,8 +64,4 @@ public class JumpAttackState : State
         grounded = character.controller.isGrounded;
     }
 
-    void Jump()
-    {
-        gravityVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-    }
 }
