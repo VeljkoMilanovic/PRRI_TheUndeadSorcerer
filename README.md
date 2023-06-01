@@ -9,3 +9,7 @@
 ![image](https://github.com/VeljkoMilanovic/PRRI_TheUndeadSorcerer/assets/83020328/df2ae6c2-9ff1-490c-813f-e2cddf7b367f)
 
 ![image](https://github.com/VeljkoMilanovic/PRRI_TheUndeadSorcerer/assets/83020328/43fff0ac-3d6c-4980-a5c9-2c85f1085faf)
+
+![image](https://github.com/VeljkoMilanovic/PRRI_TheUndeadSorcerer/assets/83020328/23ab865d-3cb8-4cb6-b4a9-c9ba02dda601)
+
+![image](https://github.com/VeljkoMilanovic/PRRI_TheUndeadSorcerer/assets/83020328/8a142b48-e508-4be7-ae42-d367c1939ea8)
