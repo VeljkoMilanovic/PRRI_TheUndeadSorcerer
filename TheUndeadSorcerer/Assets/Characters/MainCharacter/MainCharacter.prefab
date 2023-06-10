@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda05a185f1d1b1499f66d57858ab119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCharacterStats: {fileID: 11400000, guid: 2a7f0f2e657a53e49b208cf7a2047867, type: 2}
   playerSpeed: 5
   crouchSpeed: 2
   sprintSpeed: 7

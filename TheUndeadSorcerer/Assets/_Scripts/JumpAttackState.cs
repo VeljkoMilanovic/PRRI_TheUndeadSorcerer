@@ -23,6 +23,7 @@ public class JumpAttackState : State
 
         timePassed = 0f;
         grounded = false;
+        character.isSpecialAttack = true;
         gravityValue = character.gravityValue;
         jumpHeight = character.jumpHeight;
         playerSpeed = character.playerSpeed;

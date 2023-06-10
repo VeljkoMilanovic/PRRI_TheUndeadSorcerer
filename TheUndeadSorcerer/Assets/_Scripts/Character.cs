@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class Character : MonoBehaviour
 {
+    [Header("Character Stats")]
+    public GameCharacter mainCharacterStats;
+
     [Header("Controls")]
     public float playerSpeed = 5.0f;
     public float crouchSpeed = 2.0f;
@@ -48,6 +51,10 @@ public class Character : MonoBehaviour
     public CharacterSound characterSound;
     [HideInInspector]
     public Vector3 playerVelocity;
+    [HideInInspector]
+    public bool isBasicAttack;
+    [HideInInspector]
+    public bool isSpecialAttack;
 
 
     // Start is called before the first frame update

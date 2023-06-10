@@ -8,7 +8,14 @@ public class DamageDealer : MonoBehaviour
     List<GameObject> hasDealtDamage;
 
     [SerializeField] private float weaponLength;
-    [SerializeField] private float weaponDamage;
+
+    private Character character;
+    private float weaponDamage;
+
+    private void Awake()
+    {
+        character = GetComponentInParent<Character>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +36,22 @@ public class DamageDealer : MonoBehaviour
             {
                 if (hit.transform.TryGetComponent(out Enemy enemy) && !hasDealtDamage.Contains(hit.transform.gameObject))
                 {
-                    enemy.RemoveHealth(weaponDamage);
-                    hasDealtDamage.Add(hit.transform.gameObject);
+                    if (character.isBasicAttack && !character.isSpecialAttack)
+                    {
+                        weaponDamage = character.mainCharacterStats.basicAttackDamage;
+                        enemy.RemoveHealth(weaponDamage);
+                        hasDealtDamage.Add(hit.transform.gameObject);
+                    }
+                    else if (character.isSpecialAttack && !character.isBasicAttack)
+                    {
+                        weaponDamage = character.mainCharacterStats.specialAttackDamage;
+                        enemy.RemoveHealth(weaponDamage);
+                        hasDealtDamage.Add(hit.transform.gameObject);
+                    }
+                    else
+                    {
+                        weaponDamage = 0f;
+                    }
                 }
             }
         }

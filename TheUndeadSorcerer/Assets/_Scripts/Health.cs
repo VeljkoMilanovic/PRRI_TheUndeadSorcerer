@@ -7,7 +7,8 @@ public class Health : MonoBehaviour
     private Animator animator;
     private Character character;
 
-    public float health = 100f;
+    public float health;
+
     [SerializeField] GameObject ragdoll;
 
     private void Awake()
@@ -19,7 +20,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        health = character.mainCharacterStats.health;
     }
 
     // Update is called once per frame

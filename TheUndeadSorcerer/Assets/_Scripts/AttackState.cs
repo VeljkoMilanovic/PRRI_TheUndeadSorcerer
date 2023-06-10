@@ -16,6 +16,7 @@ public class AttackState : State
         base.Enter();
 
         attack = false;
+        character.isBasicAttack = true;
         character.animator.applyRootMotion = true;
         timePassed = 0f;
         character.animator.SetTrigger("attack");
@@ -46,6 +47,7 @@ public class AttackState : State
         }
         if (timePassed >= clipLength / clipSpeed)
         {
+            character.isBasicAttack = false;
             stateMachine.ChangeState(character.combatting);
             character.animator.SetTrigger("move");
         }

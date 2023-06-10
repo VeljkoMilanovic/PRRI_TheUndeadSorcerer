@@ -25,6 +25,7 @@ public class JumpAttackLandingState : State
         base.LogicUpdate();
         if (timePassed > landingTime)
         {
+            character.isSpecialAttack = false;
             character.animator.SetTrigger("move");
             stateMachine.ChangeState(character.combatting);
         }
