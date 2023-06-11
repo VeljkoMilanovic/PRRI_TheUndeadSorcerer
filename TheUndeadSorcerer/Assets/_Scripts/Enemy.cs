@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float health = 100;
+    [HideInInspector] public float health = 100;
+    public float maxHealth = 100;
     [SerializeField] GameObject ragdoll;
 
     [Header("Combat")]
@@ -20,6 +22,13 @@ public class Enemy : MonoBehaviour
     float newDestinationCD = 0.5f;
 
     private EnemySound enemySound;
+
+    public Action OnDamageDealt;
+
+    private void Awake()
+    {
+        health = maxHealth;
+    }
 
     void Start()
     {
@@ -79,6 +88,7 @@ public class Enemy : MonoBehaviour
     public void RemoveHealth(float damageTaken)
     {
         health -= damageTaken;
+        OnDamageDealt?.Invoke();
         Debug.Log(health);
 
         if (health > 0)

@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Health : MonoBehaviour
 {
     private Animator animator;
     private Character character;
 
-    public float health;
+    [HideInInspector] public float health;
+    public float maxHealth;
+    public Action OnDamageDealt;
 
     [SerializeField] GameObject ragdoll;
 
@@ -20,7 +23,8 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = character.mainCharacterStats.health;
+        maxHealth = character.mainCharacterStats.health;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -32,6 +36,7 @@ public class Health : MonoBehaviour
     public void RemoveHealth(float damageTaken)
     {
         health -= damageTaken;
+        OnDamageDealt?.Invoke();
         Debug.Log(health);
 
         if (health > 0)

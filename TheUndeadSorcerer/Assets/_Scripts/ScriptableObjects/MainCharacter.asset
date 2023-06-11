@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b12f92839cf19d49b63e17a5dff37a1, type: 3}
   m_Name: MainCharacter
   m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 6fecb6c81ab47bf44aa6b7b3c2e2f7a3, type: 3}
   name: Igor
   health: 150
   basicAttackDamage: 25
