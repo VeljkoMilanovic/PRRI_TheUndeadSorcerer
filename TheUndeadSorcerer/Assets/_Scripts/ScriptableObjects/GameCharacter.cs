@@ -10,4 +10,5 @@ public class GameCharacter : ScriptableObject
     public float health;
     public float basicAttackDamage;
     public float specialAttackDamage;
+    public ParticleSystem specialAttackDecal;
 }

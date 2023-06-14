@@ -1162,6 +1162,7 @@ MonoBehaviour:
   attackCD: 5
   attackRange: 1.5
   aggroRange: 4
+  enemyBloodFX: {fileID: 19894058, guid: a3c24a5ae068ed44d950af671f99cc21, type: 3}
 --- !u!114 &-3299747899445077094
 MonoBehaviour:
   m_ObjectHideFlags: 0

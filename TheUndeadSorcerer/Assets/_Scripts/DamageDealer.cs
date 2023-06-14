@@ -54,6 +54,29 @@ public class DamageDealer : MonoBehaviour
                     }
                 }
             }
+
+            InstantiateSpecialAttackFX();
+
+        }
+    }
+
+    public void InstantiateSpecialAttackFX()
+    {
+        int groundLayerMask = 1 << 10;
+        Vector3 positionCorrection = new Vector3(0f, 0.05f, 0f);
+        Vector3 rotationCorrection = new Vector3(90f, 0f, 0f);
+        RaycastHit hit;
+
+        if (Physics.SphereCast(transform.position, weaponLength * 1.5f, transform.forward, out hit, weaponLength * 1.5f, groundLayerMask))
+        {
+            if (hit.transform.TryGetComponent(out Terrain terrain))
+            {
+                if (character.isSpecialAttack && !character.isBasicAttack)
+                {
+                    Debug.Log("teren");
+                    Instantiate(character.mainCharacterStats.specialAttackDecal, hit.point + positionCorrection, Quaternion.identity * Quaternion.Euler(rotationCorrection));
+                }
+            }
         }
     }
 

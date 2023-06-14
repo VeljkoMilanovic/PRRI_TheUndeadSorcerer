@@ -17,3 +17,5 @@ MonoBehaviour:
   health: 150
   basicAttackDamage: 25
   specialAttackDamage: 50
+  specialAttackDecal: {fileID: 198129106043806410, guid: 628d050c815a3a3448ce1dcdf0578f21,
+    type: 3}

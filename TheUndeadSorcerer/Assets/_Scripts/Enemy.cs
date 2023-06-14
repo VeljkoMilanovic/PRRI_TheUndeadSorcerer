@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackCD = 5f;
     [SerializeField] float attackRange = 1f;
     [SerializeField] float aggroRange = 4f;
+    [SerializeField] ParticleSystem enemyBloodFX;
 
     GameObject player;
     NavMeshAgent agent;
@@ -88,6 +89,7 @@ public class Enemy : MonoBehaviour
     public void RemoveHealth(float damageTaken)
     {
         health -= damageTaken;
+        Instantiate(enemyBloodFX, transform.position + new Vector3(0f, 1.0f, 0f), Quaternion.identity);
         OnDamageDealt?.Invoke();
         Debug.Log(health);
 
