@@ -365,6 +365,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   characterSound: {fileID: 0}
   playerVelocity: {x: 0, y: 0, z: 0}
+  isBasicAttack: 0
+  isSpecialAttack: 0
 --- !u!114 &7147103953100746908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHealth: 0
   ragdoll: {fileID: 2399636453258510647, guid: bb6daa0191c9bc24fb1832bdb25a2882, type: 3}
 --- !u!114 &1907882551455852529
 MonoBehaviour:
@@ -406,11 +409,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSoundSource: {fileID: 0}
-  playerAttackClip: {fileID: 8300000, guid: 1883a8ec68e407940a399c271b2b132b, type: 3}
+  playerAttackClips:
+  - {fileID: 8300000, guid: 1883a8ec68e407940a399c271b2b132b, type: 3}
+  - {fileID: 8300000, guid: 92e66c5dd18437649b6ea776c5191c76, type: 3}
+  - {fileID: 8300000, guid: cf45d84c8f5018e45a0c8bd7a728649c, type: 3}
+  - {fileID: 8300000, guid: 7a7796a2952363e4193b4c354e5a3426, type: 3}
   playerJumpAttackClip: {fileID: 8300000, guid: 2e7e84e8f9f0aca4a85142438baac444,
     type: 3}
   playerHitClip: {fileID: 8300000, guid: 373766dc72a20e8439f094836186a0ee, type: 3}
   playerDeathClip: {fileID: 8300000, guid: f37522713444d2e40aa9b69fdba94bf9, type: 3}
+  playerFootstepsClips:
+  - {fileID: 8300000, guid: b63434ad0280aac4daad8201b393b0bd, type: 3}
+  - {fileID: 8300000, guid: 24a8cb969a8481049b30788ba935f5d2, type: 3}
+  - {fileID: 8300000, guid: a6c6743ff7f7563448a336865e00bb86, type: 3}
+  - {fileID: 8300000, guid: afb4c662b40540044a94f35c0ae5d9d1, type: 3}
+  - {fileID: 8300000, guid: c5d9af9f6be497845a4c93b8fb6616de, type: 3}
+  - {fileID: 8300000, guid: 127298d53be1f0f409e048c023fd5d62, type: 3}
+  - {fileID: 8300000, guid: f8cd8a12b1817a64e85598513883c101, type: 3}
+  - {fileID: 8300000, guid: 2a296d02c5d6a314b90eeed9d47942e5, type: 3}
+  - {fileID: 8300000, guid: 28eb1d1caddcddf41804dc1cc8850c43, type: 3}
+  - {fileID: 8300000, guid: 89a2a88d4bf143d45be4df772155e6b1, type: 3}
 --- !u!1 &214933804841351028
 GameObject:
   m_ObjectHideFlags: 0

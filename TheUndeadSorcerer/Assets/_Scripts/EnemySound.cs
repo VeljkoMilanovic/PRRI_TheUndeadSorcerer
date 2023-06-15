@@ -9,6 +9,11 @@ public class EnemySound : MonoBehaviour
     [SerializeField] AudioClip enemyHitClip;
     [SerializeField] AudioClip enemyDeathClip;
 
+    private void Awake()
+    {
+        enemySoundSource = FindObjectOfType<EnemySFXSource>().GetComponent<AudioSource>();
+    }
+
     public void PlayAttackClip()
     {
         enemySoundSource.clip = enemyAttackClip;

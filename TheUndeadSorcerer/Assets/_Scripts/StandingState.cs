@@ -66,6 +66,14 @@ public class StandingState : State
 
         character.animator.SetFloat("speed", input.magnitude, character.speedDampTime, Time.deltaTime);
 
+        float threshold = 0.01f;
+        float characterSpeed = character.animator.GetFloat("speed");
+
+        if(Mathf.Abs(characterSpeed) <= threshold)
+        {
+            character.animator.SetFloat("speed", 0f);
+        }
+
         if (jump)
         {
             stateMachine.ChangeState(character.jumping);

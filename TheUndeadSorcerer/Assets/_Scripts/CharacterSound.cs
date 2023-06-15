@@ -5,15 +5,18 @@ using UnityEngine;
 public class CharacterSound : MonoBehaviour
 {
     [SerializeField] AudioSource playerSoundSource;
-    [SerializeField] AudioClip playerAttackClip;
+    [SerializeField] List<AudioClip> playerAttackClips;
     [SerializeField] AudioClip playerJumpAttackClip;
     [SerializeField] AudioClip playerHitClip;
     [SerializeField] AudioClip playerDeathClip;
+    [SerializeField] List<AudioClip> playerFootstepsClips;
+
+    private float timePassed;
 
     public void PlayAttackClip()
     {
-        playerSoundSource.clip = playerAttackClip;
-        playerSoundSource.Play();
+        int randomAttackClip = Random.Range(0, playerAttackClips.Count - 1);
+        playerSoundSource.PlayOneShot(playerAttackClips[randomAttackClip]);
     }
     
     public void PlayJumpAttackClip()
@@ -32,5 +35,11 @@ public class CharacterSound : MonoBehaviour
     {
         playerSoundSource.clip = playerDeathClip;
         playerSoundSource.Play();
+    }
+
+    public void PlayFootstepsClip()
+    {
+        int randomFootstepsClip = Random.Range(0, playerFootstepsClips.Count - 1);
+        playerSoundSource.PlayOneShot(playerFootstepsClips[randomFootstepsClip]);
     }
 }

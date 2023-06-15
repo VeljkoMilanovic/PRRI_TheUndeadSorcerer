@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     private int enemiesKilledCount = 0;
-    private int enemiesKilledGoal = 10;
+    private int enemiesKilledGoal;
 
     [SerializeField] GameObject gameOverCanvas;
     [SerializeField] GameObject levelCompletedCanvas;
@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemiesKilledGoal = FindObjectsOfType<Enemy>().Length;
+
         enemiesKilledCounterTxt.text = "Enemies Killed: " + enemiesKilledCount.ToString() + "/" + enemiesKilledGoal.ToString();
     }
 
